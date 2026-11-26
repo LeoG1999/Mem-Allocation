@@ -1,0 +1,82 @@
+# Paper-facing experiment configuration.
+
+data:
+  longmemeval_s: data/longmemeval/longmemeval_s.json
+  locomo: data/locomo/locomo_test.json
+  results_dir: data/results
+
+models:
+  answer: deepseek-v4-flash
+  judge: deepseek-v4-flash
+
+sampling:
+  max_samples: 500
+  locomo_max_samples: 200
+
+evaluation:
+  budgets: [1000, 2000, 4000, 6000]
+  locomo_budgets: [500, 1000, 2000, 4000]
+  default_budget: 4000
+  judge_mode: hybrid
+  seeds: [42]
+  shuffle: true
+  main_table_strategies:
+    - recent_sessions
+    - bm25_session
+    - session_summary
+    - embedding_chunk
+    - bm25_chunk
+    - bm25_chunk_trackb
+    - dual_track
+  locomo_matched_strategies:
+    - bm25_chunk_trackb
+    - dual_track
+
+strategies:
+  recent_sessions:
+    window_size: null
+    max_chars_per_turn: null
+    max_turns_per_session: null
+  session_summary:
+    recent_session_count: 100000
+    max_chars_per_turn: null
+    max_turns_per_session: null
+    use_llm_summary: true
+    llm_input_char_limit: null
+    max_tokens_summary: 300
+    query_aware: true
+  bm25_session:
+    top_k: null
+    max_chars_per_turn: null
+    recency_bias: 0.0
+    k1: 1.5
+    b: 0.75
+  embedding_chunk:
+    model_name: all-MiniLM-L6-v2
+    top_k: 8
+    chunk_size: 64
+    chunk_overlap: 16
+    recency_bias: 0.0
+  bm25_chunk:
+    top_k: 8
+    chunk_size: 64
+    chunk_overlap: 16
+    recency_bias: 0.0
+    k1: 1.5
+    b: 0.75
+  bm25_chunk_trackb:
+    top_k: null
+    chunk_size_chars: 1024
+    chunk_overlap_chars: 128
+    k1: 1.5
+    b: 0.75
+    packing_mode: whole_unit_skip
+  dual_track:
+    max_memos: 20
+    memo_in_context: 5
+    top_k: null
+    track_b_label: Semantic Memory
+    use_llm_memo: true
+    chunk_size: 256
+    chunk_overlap: 32
+    packing_mode: whole_unit_skip

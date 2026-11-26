@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "Please cite the EACL 2027 paper when using this software."
+title: "When Splitting Beats Concentrating: Memory Allocation in Long-Term Conversational Agents"
+type: software
+authors:
+  - family-names: Guo
+    given-names: Zihe
+  - family-names: Xu
+    given-names: Cai
+  - family-names: Shang
+    given-names: Liqiang
+  - family-names: Zhao
+    given-names: Yilun
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "When Splitting Beats Concentrating: Memory Allocation in Long-Term Conversational Agents"
+  authors:
+    - family-names: Guo
+      given-names: Zihe
+    - family-names: Xu
+      given-names: Cai
+    - family-names: Shang
+      given-names: Liqiang
+    - family-names: Zhao
+      given-names: Yilun
+  conference:
+    name: "EACL 2027"
+  year: 2027

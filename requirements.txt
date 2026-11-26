@@ -1,0 +1,5 @@
+openai==2.36.0
+numpy==1.26.4
+PyYAML==6.0.2
+matplotlib==3.9.4
+sentence-transformers==2.7.0

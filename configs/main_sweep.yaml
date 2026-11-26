@@ -1,0 +1,12 @@
+# LongMemEval-S, 1k–6k. Both policies use the Appendix A.2 serialization.
+base_config: experiment_config.yaml
+strategy_overrides:
+  dual_track:
+    five_chunk_sweep: true
+    top_k: null
+    track_b_label: Semantic Memory
+  bm25_chunk_trackb:
+    top_k: null
+    track_b_label: Semantic Memory
+  session_summary:
+    llm_input_char_limit: null
